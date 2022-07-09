@@ -28,3 +28,25 @@ console.log(arr2);
 const incrementByTwo = (num) => num+2;
 arr3 = arr2.map(incrementByTwo); 
 console.log(arr3);
+
+//Array.reduce()
+const numbers = [1, 3, 5 , 2, 22, 11, 9]
+const oddSum = (sum, num) => num%2 === 0? sum : sum + num;
+const arr4 = numbers.reduce(oddSum, 0);
+console.log(arr4);
+
+const reduceObj = (oddEvenObj, num) => num%2 === 0? {...oddEvenObj, even: oddEvenObj.even+num} : {...oddEvenObj, odd: oddEvenObj.odd+num};
+const oddEvenObj = {odd: 0, even: 0}
+const sumObj = numbers.reduce(reduceObj, oddEvenObj);
+console.log(sumObj)
+
+//Currying
+const giveYourName = (name) => msg => console.log(`${name} says, ${msg}`);
+giveYourName("Siddhartha")("you are awesome!");
+
+//Composition
+const logWithName = msg => `Siddhartha says, ${msg}`;
+const logWithID = msg => `ID: 163608 :: ${msg}`
+const logWithIDAndName = msg => logWithID(logWithName(msg));
+
+console.log(logWithIDAndName("you are awesome!"));
